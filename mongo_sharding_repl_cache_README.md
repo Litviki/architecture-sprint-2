@@ -11,9 +11,11 @@ rs.initiate({_id: "shard2", members: [ {_id: 0, host: "shard2:27021"}, {_id: 1, 
 exit
 
 docker exec -it configsrv mongosh mongodb://127.0.0.1:27017
+rs.initiate({_id : "config_server",configsvr: true, members: [{ _id : 0, host : "configsrv:27017" }]});
 exit
 
 docker exec -it mongos_router mongosh mongodb://127.0.0.1:27024
 sh.addShard( "shard1/shard1:27018")
 sh.addShard( "shard2/shard2:27021")
+
 exit
