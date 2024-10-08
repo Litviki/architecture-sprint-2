@@ -183,22 +183,6 @@ services:
       interval: 5s
       start_period: 10s
 
- mongo_test1:
-    image: mongo:latest
-    container_name: mongo_test1
-    ports:
-      - "27030:27030"
-    networks:
-      app-network:
-        ipv4_address: 173.17.0.100  
-    volumes:
-      - mongo_test1:/data/db
-    command: ["--replSet","shard21","--bind_ip_all", "--port", "27030"]   
-    healthcheck:
-      test: [ "CMD", "mongo", "--eval", "db.adminCommand('ping')" ]
-      interval: 5s
-      start_period: 10s  
-
  mongos_router:
     image: mongo:latest
     container_name: mongos_router
@@ -239,4 +223,3 @@ volumes:
   shard1-mongodb3-data: 
   shard2-mongodb2-data:
   shard2-mongodb3-data: 
-  mongo_test1:  

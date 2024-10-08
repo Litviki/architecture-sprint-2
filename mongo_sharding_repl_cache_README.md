@@ -16,4 +16,5 @@ exit
 docker exec -it mongos_router mongosh mongodb://127.0.0.1:27024
 sh.addShard( "shard1/shard1:27018")
 sh.addShard( "shard2/shard2:27021")
+
 exit
